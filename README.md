@@ -2,7 +2,7 @@
 
 A framework for creating bookmarklets.
 
-It's powered by [esbuild](https://esbuild.github.io/), [esno](https://github.com/antfu/esno), and [TypeScript](https://www.typescriptlang.org/).
+It's powered by [sade](https://github.com/lukeed/sade), [esbuild](https://esbuild.github.io/), and [TypeScript](https://www.typescriptlang.org/).
 
 ## Getting Started
 
@@ -21,7 +21,7 @@ $ yarn global add @ryanccn/bookmarklet
 And build your bookmarklet!
 
 ```console
-$ bookmarklet build index.ts
+$ bookmarklet index.ts
 
 Built in 11.81ms
 Wrote to bookmarklet.txt
