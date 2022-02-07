@@ -2,4 +2,5 @@
 .localized
 
 node_modules/
-/bookmarklet.txt
+
+dist/

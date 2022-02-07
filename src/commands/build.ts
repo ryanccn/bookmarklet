@@ -1,13 +1,13 @@
 import { build as esbuild } from 'esbuild';
 import { bold, green, cyan, dim, magenta } from 'kleur/colors';
 
-import { readConfig } from '/@/config';
+import { ConfigOptions, readConfig } from '/@/config';
 import { pbcopy } from '/@/utils';
 
 import { readFile, writeFile } from 'fs/promises';
 
-export const build = async (file: string) => {
-  const config = await readConfig();
+export const build = async (file: string, options: ConfigOptions) => {
+  const config = await readConfig(options);
 
   const timeStart = performance.now();
 
