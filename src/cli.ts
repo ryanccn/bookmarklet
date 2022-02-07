@@ -5,7 +5,7 @@ import sade from 'sade';
 import { build } from '/@/commands/build';
 
 sade('bookmarklet')
-  .version('0.0.3')
+  .version('0.0.4')
   .command('build <file>')
   .describe('Build a bookmarklet')
   .option('--write', 'The file to write to')
