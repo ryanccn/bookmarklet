@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - run: Build the CLI
+      - name: Build the CLI
         run: yarn build
 
       - name: Publish (with npm)
