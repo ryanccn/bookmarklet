@@ -1,3 +1,7 @@
-# ryanccn/bookmarklet
+# 🔖 @ryanccn/bookmarklet
 
-A template for creating bookmarklets.
+A framework for creating bookmarklets.
+
+It's powered by [esbuild](https://esbuild.github.io/), [esno](https://github.com/antfu/esno), and [TypeScript](https://www.typescriptlang.org/).
+
+## Getting Started

@@ -1,31 +1,24 @@
-import { build } from 'esbuild';
-import { bold, green, cyan, dim, red, magenta } from 'kleur/colors';
+import { build as esbuild } from 'esbuild';
+import { bold, green, cyan, dim, magenta } from 'kleur/colors';
+
+import { readConfig } from '/@/config';
+import { pbcopy } from '/@/utils';
 
 import { readFile, writeFile } from 'fs/promises';
-import { execa } from 'execa';
 
-import config from './_config';
+export const build = async (file: string) => {
+  const config = await readConfig();
 
-const pbcopy = async (output: string) => {
-  const proc = await execa('pbcopy', { input: output });
-
-  if (proc.exitCode !== 0) {
-    console.error(red(`\`pbcopy\` exited with code ${proc.exitCode}`));
-    process.exit(1);
-  }
-};
-
-(async () => {
   const timeStart = performance.now();
 
-  const info = await build({
-    entryPoints: ['index.ts'],
+  const info = await esbuild({
+    entryPoints: [file],
     bundle: true,
     minify: true,
     format: 'iife',
 
     platform: 'browser',
-    target: 'chrome96',
+    target: config.target ?? 'chrome96',
 
     ...(config.write
       ? { outfile: config.write, write: true }
@@ -36,11 +29,13 @@ const pbcopy = async (output: string) => {
     'Built in ' + bold(green(`${(performance.now() - timeStart).toFixed(2)}ms`))
   );
 
+  if (!config.write && !info.outputFiles) throw new Error();
+
   const prefixedOutput =
     'javascript:' +
     (config.write
       ? await readFile(config.write, { encoding: 'utf8' })
-      : info.outputFiles[0].text
+      : (info.outputFiles ?? [{ text: '' }])[0].text
     ).trim();
 
   if (config.write) {
@@ -63,7 +58,4 @@ const pbcopy = async (output: string) => {
       else console.log(dim('[copied to clipboard]'));
     }
   }
-})().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+};
