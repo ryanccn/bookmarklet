@@ -1,6 +1,6 @@
 {
   "name": "@ryanccn/bookmarklet",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A framework for creating bookmarklets",
   "repository": "https://github.com/ryanccn/bookmarklet",
   "author": "Ryan Cao",
