@@ -52,6 +52,10 @@
     "lint": {
       "description": "Lint with ESLint",
       "icon": "🧐"
+    },
+    "format": {
+      "description": "Format with Prettier",
+      "icon": "✨"
     }
   }
 }
