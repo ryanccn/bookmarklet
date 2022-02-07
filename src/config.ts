@@ -24,13 +24,17 @@ export const readConfig = async (options?: ConfigOptions): Promise<Config> => {
   let rawData: unknown;
 
   try {
-    const file = await readFile(join(process.cwd(), '.bookmarklet.json'), {
-      encoding: 'utf-8',
-    });
-
-    rawData = JSON.parse(file);
+    rawData = (await import(join(process.cwd(), '.bookmarklet.mjs'))).default;
   } catch {
-    rawData = {};
+    try {
+      const file = await readFile(join(process.cwd(), '.bookmarklet.json'), {
+        encoding: 'utf-8',
+      });
+
+      rawData = JSON.parse(file);
+    } catch {
+      rawData = {};
+    }
   }
 
   const parsed = ConfigZod.safeParse(rawData);
@@ -47,16 +51,12 @@ export const readConfig = async (options?: ConfigOptions): Promise<Config> => {
 
   const parsedOptions = parsedOptionsRet.data;
 
-  const doubleParsedOptions = ConfigZod.safeParse({
+  const doubleParsedOptions = {
     ...(parsedOptions.write ? { write: parsedOptions.write } : {}),
     ...(parsedOptions.print ? { print: parsedOptions.print === 'true' } : {}),
     ...(parsedOptions.copy ? { copy: parsedOptions.copy === 'true' } : {}),
     ...(parsedOptions.target ? { write: parsedOptions.target } : {}),
-  });
+  };
 
-  if (!doubleParsedOptions.success) {
-    throw new Error(doubleParsedOptions.error.message);
-  }
-
-  return Object.assign(parsed.data, doubleParsedOptions.data);
+  return Object.assign(parsed.data, doubleParsedOptions);
 };

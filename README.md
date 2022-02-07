@@ -30,13 +30,18 @@ Wrote to bookmarklet.txt
 
 ## Configuration
 
-`bookmarklet` currently reads configuration from `.bookmarklet.json`. The types are as follows:
+`bookmarklet` currently reads configuration from
+
+1. `.bookmarklet.mjs`
+2. `.bookmarklet.json`
+
+The types are as follows:
 
 ```ts
 {
   target?: string | undefined;
-  write: string | false;
-  print: boolean;
-  copy: boolean;
+  write?: string | false;
+  print?: boolean;
+  copy?: boolean;
 }
 ```
