@@ -2,7 +2,6 @@
   "name": "bookmarklet",
   "version": "0.0.1",
   "description": "A template for creating bookmarklets",
-  "main": "index.js",
   "repository": "https://github.com/ryanccn/bookmarklet",
   "author": "Ryan Cao",
   "private": true,
