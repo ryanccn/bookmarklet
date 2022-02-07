@@ -2,7 +2,7 @@
 
 import sade from 'sade';
 
-import { build } from '/@/commands/build';
+import { build } from './build';
 
 sade('bookmarklet <file>', true)
   .version('0.1.1')
