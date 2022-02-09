@@ -6,7 +6,7 @@ const ConfigZod = z.object({
   write: z.union([z.literal(false), z.string()]).default('bookmarklet.txt'),
   print: z.boolean().default(false),
   copy: z.boolean().default(true),
-  target: z.optional(z.string()),
+  target: z.string().default('chrome96'),
 });
 
 export type Config = z.infer<typeof ConfigZod>;

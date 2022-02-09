@@ -18,7 +18,7 @@ export const build = async (file: string, options: ConfigOptions) => {
     format: 'iife',
 
     platform: 'browser',
-    target: config.target ?? 'chrome96',
+    target: config.target,
 
     ...(config.write
       ? { outfile: config.write, write: true }
