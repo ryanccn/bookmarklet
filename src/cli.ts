@@ -6,8 +6,8 @@ import { dim } from 'kleur/colors';
 import { build } from './build';
 
 sade('bookmarklet <file>', true)
-  .version('0.1.2')
-  .describe('Build a bookmarklet')
+  .version('0.1.3')
+  .describe('A CLI for creating bookmarklets')
   .option(
     '--write',
     `The file to write to ${dim('[default: bookmarklet.txt]')}`

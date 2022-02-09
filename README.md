@@ -1,6 +1,6 @@
 # 🔖 @ryanccn/bookmarklet
 
-A framework for creating bookmarklets.
+A CLI for creating bookmarklets.
 
 It's powered by [sade](https://github.com/lukeed/sade), [esbuild](https://esbuild.github.io/), and [TypeScript](https://www.typescriptlang.org/).
 
